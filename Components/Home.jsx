@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
   const [auth, setAuth] = useState(false);
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
 
+  navigate = useNavigate();
   axios.defaults.withCredentials = true
   useEffect(() => {
     axios.get('http://localhost:8081')
       .then(res => {
         if (res.data.Status === "Success") {
           setAuth(true)
-          setEmail(res.data.email)
+          setUsername(res.data.username)
          
         } else {
           setAuth(false)

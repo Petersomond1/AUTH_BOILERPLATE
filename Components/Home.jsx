@@ -20,7 +20,7 @@ const Home = () => {
          
         } else {
           setAuth(false)
-          setMessage(res.data.Error)
+          setMessage(res.data.Error + " - " + "Your are not authenticated")
         }
       })
       .catch(err => console.log(err));
